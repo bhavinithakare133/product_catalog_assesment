@@ -60,15 +60,6 @@ Application runs on:
 http://localhost:3000
 ```
 
----
-
-## 📸 Screens
-
-- Home Page
-- Product Listing
-- Product Details
-- Create Product
-- Edit Product
 
 ---
 

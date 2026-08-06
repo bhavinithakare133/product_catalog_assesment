@@ -75,72 +75,135 @@ export default function ProductDetailsPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+  <div className="max-w-7xl mx-auto p-8">
 
-      <button
-        onClick={() => router.back()}
-        className="mb-6 text-blue-600 hover:underline"
-      >
-        ← Back
-      </button>
+    <button
+      onClick={() => router.back()}
+      className="mb-8 text-blue-600 hover:text-blue-800 font-medium"
+    >
+      ← Back to Products
+    </button>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-2xl shadow-lg p-8">
 
-        <div>
-          <Image
-            src={product.thumbnail}
-            alt={product.title}
-            width={500}
-            height={500}
-            className="rounded-lg w-full border"
-          />
+      {/* Product Image */}
+      <div>
+        <Image
+          src={product.thumbnail}
+          alt={product.title}
+          width={600}
+          height={600}
+          className="rounded-xl w-full border shadow"
+        />
+      </div>
+
+      {/* Product Details */}
+      <div>
+
+        <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+          {product.category}
+        </span>
+
+        <h1 className="text-4xl font-bold mt-4">
+          {product.title}
+        </h1>
+
+        {product.brand && (
+          <p className="text-lg text-gray-600 mt-2">
+            Brand: <span className="font-semibold">{product.brand}</span>
+          </p>
+        )}
+
+        <div className="flex items-center gap-6 mt-6">
+
+          <p className="text-4xl font-bold text-green-600">
+            ₹ {product.price}
+          </p>
+
+          <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full font-medium">
+            ⭐ {product.rating}
+          </span>
+
         </div>
 
-        <div>
+        <p className="text-gray-700 leading-8 mt-8">
+          {product.description}
+        </p>
 
-          <h1 className="text-4xl font-bold">
-            {product.title}
-          </h1>
+        {/* Product Info */}
+        <div className="grid grid-cols-2 gap-4 mt-8">
 
-          <p className="text-gray-500 mt-2 capitalize">
-            {product.category}
-          </p>
+          <div className="border rounded-xl p-4">
+            <p className="text-gray-500 text-sm">
+              Stock
+            </p>
 
-          <h2 className="text-3xl font-bold text-green-600 mt-5">
-            ₹ {product.price}
-          </h2>
-
-          <p className="mt-3 text-lg">
-            ⭐ {product.rating}
-          </p>
-
-          <p className="mt-6 leading-7">
-            {product.description}
-          </p>
-
-          <div className="flex gap-4 mt-8">
-
-            <button
-              onClick={() =>
-                router.push(`/products/edit/${product.id}`)
-              }
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg"
-            >
-              Edit
-            </button>
-
-            <button
-              onClick={handleDelete}
-              className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg"
-            >
-              Delete
-            </button>
-
+            <p className="text-xl font-bold">
+              {product.stock}
+            </p>
           </div>
+
+          <div className="border rounded-xl p-4">
+            <p className="text-gray-500 text-sm">
+              Discount
+            </p>
+
+            <p className="text-xl font-bold text-red-500">
+              {product.discountPercentage}%
+            </p>
+          </div>
+
+          {product.weight && (
+            <div className="border rounded-xl p-4">
+              <p className="text-gray-500 text-sm">
+                Weight
+              </p>
+
+              <p className="text-xl font-bold">
+                {product.weight} g
+              </p>
+            </div>
+          )}
+
+          {product.sku && (
+            <div className="border rounded-xl p-4">
+              <p className="text-gray-500 text-sm">
+                SKU
+              </p>
+
+              <p className="text-xl font-bold">
+                {product.sku}
+              </p>
+            </div>
+          )}
+
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-4 mt-10">
+
+          <button
+            onClick={() =>
+              router.push(`/products/edit/${product.id}`)
+            }
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg transition"
+          >
+            ✏️ Edit Product
+          </button>
+
+          <button
+            onClick={handleDelete}
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition"
+          >
+            🗑 Delete Product
+          </button>
 
         </div>
 
       </div>
+
     </div>
-  );
+
+  </div>
+);
 }

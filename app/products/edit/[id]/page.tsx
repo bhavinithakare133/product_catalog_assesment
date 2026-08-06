@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-
+import Loader from "@/components/Loader/Loader";
 import ProductForm, {
   ProductFormData,
 } from "@/components/ProductForm/ProductForm";
@@ -61,8 +61,8 @@ export default function EditProductPage() {
   }
 
   if (!defaultValues) {
-    return <p className="p-6">Loading...</p>;
-  }
+  return <Loader />;
+}
 
   return (
     <div className="max-w-3xl mx-auto p-6">

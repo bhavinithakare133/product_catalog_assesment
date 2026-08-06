@@ -43,9 +43,8 @@ export default function ProductsPage() {
     loadProducts();
   }, []);
 
-
   const categories = useMemo(() => {
-    return [...new Set(products.map((product) => product.category))];
+    return [...new Set(products.map((p) => p.category))];
   }, [products]);
 
   const filteredProducts = useMemo(() => {
@@ -101,7 +100,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto">
 
       <h1 className="text-3xl font-bold mb-6">
         Products
@@ -110,21 +109,21 @@ export default function ProductsPage() {
       <div className="flex flex-col md:flex-row gap-4 mb-8">
 
         <SearchBar
-            value={search}
-            onChange={(value) => {
-                setSearch(value);
-                setCurrentPage(1);
-            }}
-            />
+          value={search}
+          onChange={(value) => {
+            setSearch(value);
+            setCurrentPage(1);
+          }}
+        />
 
         <CategoryFilter
-            categories={categories}
-            selected={category}
-            onChange={(value) => {
-                setCategory(value);
-                setCurrentPage(1);
-            }}
-            />
+          categories={categories}
+          selected={category}
+          onChange={(value) => {
+            setCategory(value);
+            setCurrentPage(1);
+          }}
+        />
 
         <SortDropdown
           value={sort}
@@ -158,6 +157,7 @@ export default function ProductsPage() {
           />
         </>
       )}
+
     </div>
   );
 }

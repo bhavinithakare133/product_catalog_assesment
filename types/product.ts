@@ -4,8 +4,14 @@ export interface Product {
   description: string;
   category: string;
   price: number;
+  discountPercentage: number;
   rating: number;
+  stock: number;
+  brand: string;
   thumbnail: string;
+
+  sku?: string;
+  weight?: number;
 }
 
 export interface ProductResponse {

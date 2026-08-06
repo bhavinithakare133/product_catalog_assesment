@@ -14,18 +14,18 @@ export const productService = {
     return response.data;
   },
 
-  async addProduct(product: Partial<Product>) {
-    const response = await axios.post(`${BASE_URL}/add`, product);
-    return response.data;
-  },
+async addProduct(product: Partial<Product>) {
+  const response = await axios.post(`${BASE_URL}/add`, product);
+  return response.data;
+},
 
-  async updateProduct(id: number, product: Partial<Product>) {
-    const response = await axios.put(`${BASE_URL}/${id}`, product);
-    return response.data;
-  },
+async updateProduct(id: number, product: Partial<Product>) {
+  const response = await axios.put(`${BASE_URL}/${id}`, product);
+  return response.data;
+},
 
-  async deleteProduct(id: number) {
-    const response = await axios.delete(`${BASE_URL}/${id}`);
-    return response.data;
-  },
+async deleteProduct(id: number) {
+  const response = await axios.delete(`${BASE_URL}/${id}`);
+  return response.data;
+},
 };
